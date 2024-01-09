@@ -1,9 +1,12 @@
+# Andrea Ghiotto 2118418, David Petrovic 2092073
+# Learning From Network project
+# Implementation of eigenTriangle algorithm
+
 import numpy as np 
 import networkx as nx
 from scipy.sparse.linalg import eigsh
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import csgraph_from_dense
-
 
 def create_adjacency_matrix_sparse(edge_list):
     G = nx.Graph()
@@ -23,7 +26,6 @@ def condition(eigenvalues, i):
    else:
       return True
 
-
 if __name__ == "__main__":
     filepath = "fifth.txt"
     #filepath = "input.txt"
@@ -33,18 +35,15 @@ if __name__ == "__main__":
     with open(filepath, 'r') as file:
         edges_file = [tuple(map(int, line.strip().split(separator)[:2])) for line in file]
 
-
-    # NB:
-    # When applied to Hermitian matrices, the Arnoldi iteration 
+    # Please note: when applied to Hermitian matrices, the Arnoldi iteration 
     # (the one used in scipy.sparse.linalg.eigs) reduces to the Lanczos algorithm.
-
 
     A = create_adjacency_matrix_sparse(edges_file)
 
     eigenvalues, vecs = eigsh(A, k = 50)
 
-    # the eigenvalues must be processed in reverse order considering them as their absolute value
-    # but they must be processed as they are (not absolute values)
+    # The eigenvalues must be processed in reverse order considering them as
+    # their absolute value but they must be processed as they are (not absolute values).
     eigenvalues_sorted = sorted(eigenvalues, key=abs, reverse=True)
 
     n = len(eigenvalues_sorted)
