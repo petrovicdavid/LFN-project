@@ -6,10 +6,21 @@ import numpy as np
 import networkx as nx
 import random
 
+
+def file_delimitator(filename):
+    with open(filename, 'r') as file:
+        prime_righe = [file.readline() for _ in range(2)]  # Read the first two rows
+
+    # Verify if there is at least one tab in the first two rows
+    tab = any('\t' in riga for riga in prime_righe)
+
+    # Return the correct delimatator
+    return '\t' if tab else ' '
+
+
 if __name__ == "__main__":
     filepath = "../dataset/first.txt"
-    separator = ' '
-    #separator = '\t'
+    separator = file_delimitator(filepath)
     edges = []
     
     with open(filepath, 'r') as file:
