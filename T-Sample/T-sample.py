@@ -34,8 +34,8 @@ if __name__ == "__main__":
 
     print(n)
     
-    # Since the formula for the approximation of the number of triangles
-    # has 1 at the denominator, we just count all the triangles in R base.
+    # If we are considering the i-th edge, with i<=c, the formula for the approximation of the number of triangles
+    # has 1 at the denominator, thus, we simplify the count by considering all the triangles in R base.
     G = nx.from_edgelist(R)
     tot_triangles = sum(nx.triangles(G).values())/3
     
