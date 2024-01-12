@@ -27,8 +27,7 @@ def condition(eigenvalues, i):
       return True
 
 if __name__ == "__main__":
-    filepath = "fifth.txt"
-    #filepath = "input.txt"
+    filepath = "../dataset/first.txt"
     separator = ' '
     #separator = '\t'
   
