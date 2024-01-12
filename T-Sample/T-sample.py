@@ -6,17 +6,15 @@ import numpy as np
 import networkx as nx
 import random
 
-
 def file_delimitator(filename):
     with open(filename, 'r') as file:
         first_rows = [file.readline() for _ in range(2)]  # Read the first two rows
 
-    # Verify if there is at least one tab in the first two rows
+    # Verify if there is at least one tab in the first two rows.
     tab = any('\t' in row for row in first_rows)
 
-    # Return the correct delimatator
+    # Return the correct delimatator.
     return '\t' if tab else ' '
-
 
 if __name__ == "__main__":
     filepath = "../dataset/first.txt"
@@ -27,7 +25,6 @@ if __name__ == "__main__":
         edges = [tuple(map(int, line.strip().split(separator))) for line in file]
 
     n = len(edges)
-    #c = 50000
     c = int(n*6/100) # Capacity of R_base
     R = edges[:c] # R_base
     tot_triangles = 0
@@ -75,10 +72,10 @@ if __name__ == "__main__":
 
     tot_triangles = int(tot_triangles)
 
-    print("Tot_triangles: {:,}".format(tot_triangles))
+    print("Totale number of triangles: {:,}".format(tot_triangles))
 
     # Save the result (number of edges and approximate number of triangles) in the file
     with open("result.txt", "a") as file:
         file.write(str(n) + " " + str(triangles) + "\n")
 
-    print("Result saved")
+    print("Result saved!")

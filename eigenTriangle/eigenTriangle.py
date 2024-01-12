@@ -8,15 +8,12 @@ from scipy.sparse.linalg import eigsh
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import csgraph_from_dense
 
-
-
 def create_adjacency_matrix_sparse(edge_list):
     G = nx.Graph()
     G.add_edges_from(edge_list)
     A = nx.to_scipy_sparse_array(G)
     A = A.asfptype()
     return A
-
 
 def condition(eigenvalues, i):
    tol = 0.05
@@ -29,23 +26,19 @@ def condition(eigenvalues, i):
    else:
       return True
    
-
 def file_delimitator(filename):
     with open(filename, 'r') as file:
         first_rows = [file.readline() for _ in range(2)]  # Read the first two rows
 
-    # Verify if there is at least one tab in the first two rows
+    # Verify if there is at least one tab in the first two rows.
     tab = any('\t' in row for row in first_rows)
 
-    # Return the correct delimatator
+    # Return the correct delimatator.
     return '\t' if tab else ' '
 
-
-
 if __name__ == "__main__":
-    filepath = "../dataset/fifth.txt"
+    filepath = "../dataset/first.txt"
     separator = file_delimitator(filepath)
-    
     
     with open(filepath, 'r') as file:
         edges_file = [tuple(map(int, line.strip().split(separator)[:2])) for line in file]
@@ -59,15 +52,14 @@ if __name__ == "__main__":
 
     eigenvalues, vecs = eigsh(A, k = 50)
 
-    # For searching the top k eigenvalues, they must be processed in decrescent order considering their absolute value but, 
-    # after that, they must be processed as they are (not absolute values).
+    # For searching the top k eigenvalues, they must be processed in decrescent order considering 
+    # their absolute value but, after that, they must be processed as they are (not absolute values).
     eigenvalues_sorted = sorted(eigenvalues, key=abs, reverse=True)
 
     n = len(eigenvalues_sorted)
-
     i = 3
 
-    # Eigenvalues selection
+    # Eigenvalues selection.
     while(condition(eigenvalues_sorted, i) and i < n):
         i += 1
 
@@ -76,9 +68,8 @@ if __name__ == "__main__":
     print("Number of eigenvalues used: " + str(i))
     print("Approximate number of triangles: " + str(triangles))
 
-    # Save the result (number of edges and approximate number of triangles) in the file
+    # Save the result (number of edges and approximate number of triangles) in the file.
     with open("result.txt", "a") as file:
         file.write(str(number_edges) + " " + str(triangles) + "\n")
 
-    print("Result saved")
-    
+    print("Result saved!")
