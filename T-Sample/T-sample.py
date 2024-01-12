@@ -77,8 +77,8 @@ if __name__ == "__main__":
 
     print("Tot_triangles: {:,}".format(tot_triangles))
 
-    # Save the result in the file
+    # Save the result (number of edges and approximate number of triangles) in the file
     with open("result.txt", "a") as file:
-        file.write(str(triangles) + "\n")
+        file.write(str(n) + " " + str(triangles) + "\n")
 
     print("Result saved")

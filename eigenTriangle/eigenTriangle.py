@@ -43,12 +43,14 @@ def file_delimitator(filename):
 
 
 if __name__ == "__main__":
-    filepath = "../dataset/first.txt"
+    filepath = "../dataset/fifth.txt"
     separator = file_delimitator(filepath)
     
     
     with open(filepath, 'r') as file:
         edges_file = [tuple(map(int, line.strip().split(separator)[:2])) for line in file]
+
+    number_edges = len(edges_file)
 
     # Please note: when applied to Hermitian matrices, the Arnoldi iteration 
     # (the one used in scipy.sparse.linalg.eigs) reduces to the Lanczos algorithm.
@@ -74,9 +76,9 @@ if __name__ == "__main__":
     print("Number of eigenvalues used: " + str(i))
     print("Approximate number of triangles: " + str(triangles))
 
-    # Save the result in the file
+    # Save the result (number of edges and approximate number of triangles) in the file
     with open("result.txt", "a") as file:
-        file.write(str(triangles) + "\n")
+        file.write(str(number_edges) + " " + str(triangles) + "\n")
 
     print("Result saved")
     
