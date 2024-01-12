@@ -9,10 +9,10 @@ import random
 
 def file_delimitator(filename):
     with open(filename, 'r') as file:
-        prime_righe = [file.readline() for _ in range(2)]  # Read the first two rows
+        first_rows = [file.readline() for _ in range(2)]  # Read the first two rows
 
     # Verify if there is at least one tab in the first two rows
-    tab = any('\t' in riga for riga in prime_righe)
+    tab = any('\t' in row for row in first_rows)
 
     # Return the correct delimatator
     return '\t' if tab else ' '

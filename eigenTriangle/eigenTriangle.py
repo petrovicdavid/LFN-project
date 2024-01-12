@@ -57,15 +57,15 @@ if __name__ == "__main__":
 
     eigenvalues, vecs = eigsh(A, k = 50)
 
-    # The eigenvalues must be processed in reverse order considering them as
-    # their absolute value but they must be processed as they are (not absolute values).
+    # For searching the top k eigenvalues, they must be processed in decrescent order considering their absolute value but, 
+    # after that, they must be processed as they are (not absolute values).
     eigenvalues_sorted = sorted(eigenvalues, key=abs, reverse=True)
 
     n = len(eigenvalues_sorted)
-    #print(eigenvalues_sorted)
 
     i = 3
 
+    # Eigenvalues selection
     while(condition(eigenvalues_sorted, i) and i < n):
         i += 1
 
