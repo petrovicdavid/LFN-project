@@ -75,5 +75,10 @@ if __name__ == "__main__":
 
     tot_triangles = int(tot_triangles)
 
-    print("Sampling done")
     print("Tot_triangles: {:,}".format(tot_triangles))
+
+    # Save the result in the file
+    with open("result.txt", "a") as file:
+        file.write(str(triangles) + "\n")
+
+    print("Result saved")

@@ -8,12 +8,15 @@ from scipy.sparse.linalg import eigsh
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import csgraph_from_dense
 
+
+
 def create_adjacency_matrix_sparse(edge_list):
     G = nx.Graph()
     G.add_edges_from(edge_list)
     A = nx.to_scipy_sparse_array(G)
     A = A.asfptype()
     return A
+
 
 def condition(eigenvalues, i):
    tol = 0.05
@@ -29,10 +32,10 @@ def condition(eigenvalues, i):
 
 def file_delimitator(filename):
     with open(filename, 'r') as file:
-        prime_righe = [file.readline() for _ in range(2)]  # Read the first two rows
+        first_rows = [file.readline() for _ in range(2)]  # Read the first two rows
 
     # Verify if there is at least one tab in the first two rows
-    tab = any('\t' in riga for riga in prime_righe)
+    tab = any('\t' in row for row in first_rows)
 
     # Return the correct delimatator
     return '\t' if tab else ' '
@@ -40,7 +43,7 @@ def file_delimitator(filename):
 
 
 if __name__ == "__main__":
-    filepath = "../dataset/second.txt"
+    filepath = "../dataset/first.txt"
     separator = file_delimitator(filepath)
     
     
@@ -68,5 +71,12 @@ if __name__ == "__main__":
 
     triangles = int(sum(x**3 for x in eigenvalues_sorted[:i])/6)
 
-    print(i)
+    print("Number of eigenvalues used: " + str(i))
     print("Approximate number of triangles: " + str(triangles))
+
+    # Save the result in the file
+    with open("result.txt", "a") as file:
+        file.write(str(triangles) + "\n")
+
+    print("Result saved")
+    
