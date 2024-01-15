@@ -19,25 +19,25 @@ def file_delimitator(filename):
 if __name__ == "__main__":
     filepath = "../dataset/first.txt"
     separator = file_delimitator(filepath)
-    edges = []
+    edges_file = []
     
     with open(filepath, 'r') as file:
-        edges = [tuple(map(int, line.strip().split(separator))) for line in file]
+        edges_file = [tuple(map(int, line.strip().split(separator))) for line in file]
 
-    n = len(edges)
-    c = int(n*6/100) # Capacity of R_base
-    R = edges[:c] # R_base
-    tot_triangles = 0
+    edges = len(edges_file)
+    c = int(edges*6/100) # Capacity of R_base
+    R = edges_file[:c] # R_base
+    triangles = 0
 
-    print(n)
+    print("Number of edges: " + str(edges))
     
     # If we are considering the i-th edge, with i<=c, the formula for the approximation of the number of triangles
     # has 1 at the denominator, thus, we simplify the count by considering all the triangles in R base.
     G = nx.from_edgelist(R)
-    tot_triangles = sum(nx.triangles(G).values())/3
+    triangles = sum(nx.triangles(G).values())/3
     
     # Sampling.
-    for i in range(c+1, n):
+    for i in range(c+1, edges):
         p = c/i
         r = random.uniform(0.0, 1.0)
         sampled = False
@@ -48,34 +48,34 @@ if __name__ == "__main__":
             G.remove_edge(chosen_edge[0], chosen_edge[1])
 
             # Add edge to graph.
-            u, v = edges[i]
+            u, v = edges_file[i]
             G.add_edge(u, v)
             sampled = True
         
         # Count triangles.
         if sampled == False:
-            u, v = edges[i]
+            u, v = edges_file[i]
             G.add_edge(u, v)
 
-        triangles = 0
+        t = 0
         prob = (c/i-1)**2
 
         # Count the number of triangles in which the edge (u,v) is involved.
         for w in set(G.neighbors(u)).intersection(G.neighbors(v)):
-            triangles += 1
+            t += 1
         
         # Remove (u,v) from G if it was not sample.
         if sampled == False:
             G.remove_edge(u, v)
 
-        tot_triangles += triangles/prob
+        triangles += t/prob
 
-    tot_triangles = int(tot_triangles)
+    triangles = int(triangles)
 
-    print("Totale number of triangles: {:,}".format(tot_triangles))
+    print("Approximate number of triangles: {:,}".format(triangles))
 
-    # Save the result (number of edges and approximate number of triangles) in the file
+    # Save the result (number of edges and approximate number of triangles) in the result file.
     with open("result.txt", "a") as file:
-        file.write(str(n) + " " + str(triangles) + "\n")
+        file.write(str(edges) + " " + str(triangles) + "\n")
 
     print("Result saved!")
