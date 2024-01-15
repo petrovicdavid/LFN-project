@@ -16,6 +16,11 @@ def file_delimitator(filename):
     # Return the correct delimatator.
     return '\t' if tab else ' '
 
+def get_dataset(filename):
+    filename = filename.replace("../dataset/", "")
+    filename = filename.replace(".txt", "")
+    return filename
+
 if __name__ == "__main__":
     filepath = "../dataset/first.txt"
     separator = file_delimitator(filepath)
@@ -75,7 +80,8 @@ if __name__ == "__main__":
     print("Approximate number of triangles: {:,}".format(triangles))
 
     # Save the result (number of edges and approximate number of triangles) in the result file.
-    with open("result.txt", "a") as file:
+    result_file = "result_" + get_dataset(filepath) + ".txt"
+    with open(result_file, "a") as file:
         file.write(str(edges) + " " + str(triangles) + "\n")
 
     print("Result saved!")
