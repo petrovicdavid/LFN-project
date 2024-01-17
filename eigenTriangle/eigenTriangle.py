@@ -38,7 +38,6 @@ def file_delimitator(filename):
 
 def get_dataset(filename):
     filename = filename.replace("../dataset/", "")
-    filename = filename.replace(".txt", "")
     return filename
 
 if __name__ == "__main__":
@@ -75,7 +74,7 @@ if __name__ == "__main__":
     print("Approximate number of triangles: " + str(triangles))
 
     # Save the result (number of edges and approximate number of triangles) in the result file.
-    result_file = "result_" + get_dataset(filepath) + ".txt"
+    result_file = "result_" + get_dataset(filepath)
     with open(result_file, "a") as file:
         file.write(str(edges) + " " + str(triangles) + "\n")
 
