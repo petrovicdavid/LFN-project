@@ -20,6 +20,13 @@ def get_dataset(filename):
     filename = filename.replace("../dataset/", "")
     return filename
 
+def number_generator():
+    number = 0
+    while number == 0:
+        number = random.uniform(0, 1)
+    return number
+
+
 if __name__ == "__main__":
     filepath = "../dataset/first.txt"
     separator = file_delimitator(filepath)
@@ -29,7 +36,7 @@ if __name__ == "__main__":
         edges_file = [tuple(map(int, line.strip().split(separator))) for line in file]
 
     edges = len(edges_file)
-    c = int(edges*6/100) # Capacity of R_base
+    c = 2000 # Capacity of R_base
     R = edges_file[:c] # R_base
     triangles = 0
 
@@ -43,7 +50,7 @@ if __name__ == "__main__":
     # Sampling.
     for i in range(c+1, edges):
         p = c/i
-        r = random.uniform(0.0, 1.0)
+        r = number_generator()
         sampled = False
         if r < p:
             # Remove a random edge.
