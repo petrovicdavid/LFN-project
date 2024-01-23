@@ -73,7 +73,7 @@ if __name__ == "__main__":
     print("Number of eigenvalues used: " + str(i))
     print("Approximate number of triangles: " + str(triangles))
 
-    # Save the result (number of edges and approximate number of triangles) in the result file.
+    # Save the results (number of edges and approximate number of triangles) in the result file.
     result_file = "result_" + get_dataset(filepath)
     with open(result_file, "a") as file:
         file.write(str(edges) + " " + str(triangles) + "\n")

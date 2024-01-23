@@ -24,12 +24,13 @@ if __name__ == "__main__":
         edges, triangles = tupla
         
         cc = triangles / (6*scipy.special.binom(edges, 3))
-        clustering_coefficients.append((cc, edges))
+        clustering_coefficients.append((edges, cc))
 
         print("Clustering coefficient: " + str(cc))
 
-    # Save the result (number of edges and approximate number of triangles) in the file.
+    # Save the results (number of edges and approximate number of triangles) in the file.
     result_file = get_dataset(filepath) + "_eigen.txt"
+    #result_file = get_dataset(filepath) + "_sample.txt"
     with open(result_file, "a") as file:
         for tupla in clustering_coefficients:
             file.write(str(tupla[0]) + " " + str(tupla[1]) + "\n")
