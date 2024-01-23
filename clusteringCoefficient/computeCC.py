@@ -35,4 +35,4 @@ if __name__ == "__main__":
         for tupla in clustering_coefficients:
             file.write(str(tupla[0]) + " " + str(tupla[1]) + "\n")
 
-    print("Result saved!")
+    print("Results saved!")

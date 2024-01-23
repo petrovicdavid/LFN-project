@@ -36,7 +36,7 @@ if __name__ == "__main__":
     print("Number of edges: " + str(edges))
     
     # If we are considering the i-th edge, with i<=c, the formula for the approximation of the number of triangles
-    # has 1 at the denominator, thus, we simplify the count by considering all the triangles in R base.
+    # has 1 at the denominator, thus, we simplify the count by considering all the triangles in R_base.
     G = nx.from_edgelist(R)
     triangles = sum(nx.triangles(G).values())/3
     
@@ -68,7 +68,7 @@ if __name__ == "__main__":
         for w in set(G.neighbors(u)).intersection(G.neighbors(v)):
             t += 1
         
-        # Remove (u,v) from G if it was not sample.
+        # Remove (u,v) from G if it was not sampled.
         if sampled == False:
             G.remove_edge(u, v)
 
@@ -83,4 +83,4 @@ if __name__ == "__main__":
     with open(result_file, "a") as file:
         file.write(str(edges) + " " + str(triangles) + "\n")
 
-    print("Result saved!")
+    print("Results saved!")

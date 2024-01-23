@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
     eigenvalues, vecs = eigsh(A, k = 50)
 
-    # For searching the top k eigenvalues, they must be processed in decrescent order considering 
+    # For searching the top k eigenvalues they must be processed in decrescent order, considering 
     # their absolute value but, after that, they must be processed as they are (not absolute values).
     eigenvalues_sorted = sorted(eigenvalues, key=abs, reverse=True)
 
@@ -78,4 +78,4 @@ if __name__ == "__main__":
     with open(result_file, "a") as file:
         file.write(str(edges) + " " + str(triangles) + "\n")
 
-    print("Result saved!")
+    print("Results saved!")
