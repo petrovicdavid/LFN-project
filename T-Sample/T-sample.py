@@ -36,7 +36,8 @@ if __name__ == "__main__":
 
     edges = len(edges_file)
     c = 2165 # Capacity of R_base for the first dataset
-    #c = 5647 # Capacity of R_base for the second dataset
+    #c = 5648 # Capacity of R_base for the second dataset
+    #c = 11740 # Capacity of R_base for the third dataset
     R = edges_file[:c] # R_base
     triangles = 0
 
