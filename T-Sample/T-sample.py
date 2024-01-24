@@ -26,7 +26,6 @@ def number_generator():
         number = random.uniform(0, 1)
     return number
 
-
 if __name__ == "__main__":
     filepath = "../dataset/first.txt"
     separator = file_delimitator(filepath)
@@ -36,7 +35,8 @@ if __name__ == "__main__":
         edges_file = [tuple(map(int, line.strip().split(separator))) for line in file]
 
     edges = len(edges_file)
-    c = 2000 # Capacity of R_base
+    c = 2165 # Capacity of R_base for the first dataset
+    #c = 5647 # Capacity of R_base for the second dataset
     R = edges_file[:c] # R_base
     triangles = 0
 
