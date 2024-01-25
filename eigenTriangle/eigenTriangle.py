@@ -4,6 +4,7 @@
 
 import numpy as np 
 import networkx as nx
+import sys
 from scipy.sparse.linalg import eigsh
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import csgraph_from_dense
@@ -41,8 +42,10 @@ def get_dataset(filename):
     return filename
 
 if __name__ == "__main__":
-    filepath = "../dataset/first.txt"
+    filename, filepath = sys.argv
+
     separator = file_delimitator(filepath)
+    edges_file = []
     
     with open(filepath, 'r') as file:
         edges_file = [tuple(map(int, line.strip().split(separator)[:2])) for line in file]

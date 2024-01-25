@@ -5,6 +5,7 @@
 import numpy as np
 import networkx as nx
 import random
+import sys
 
 def file_delimitator(filename):
     with open(filename, 'r') as file:
@@ -27,7 +28,8 @@ def number_generator():
     return number
 
 if __name__ == "__main__":
-    filepath = "../dataset/first.txt"
+    filename, filepath, c = sys.argv
+
     separator = file_delimitator(filepath)
     edges_file = []
     
@@ -35,9 +37,8 @@ if __name__ == "__main__":
         edges_file = [tuple(map(int, line.strip().split(separator))) for line in file]
 
     edges = len(edges_file)
-    c = 2165 # Capacity of R_base for the first dataset
-    #c = 5648 # Capacity of R_base for the second dataset
-    #c = 11740 # Capacity of R_base for the third dataset
+
+    c = int(c) # Capacity of R_base for the given dataset
     R = edges_file[:c] # R_base
     triangles = 0
 

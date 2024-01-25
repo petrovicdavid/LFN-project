@@ -2,18 +2,26 @@
 # Learning From Network project
 # Implementation of the computation of the clustering coefficients
 
+import sys
 import scipy.special
 
-def get_dataset(filename):
-    filename = filename.replace("../eigenTriangle/", "")
-    filename = filename.replace("../T-Sample/", "")
+def get_file(filename):
+    substring1 = "eigen"
+    substring2 = "T-Sample"
     filename = filename.replace(".txt", "")
+    if substring1 in filename:
+        filename = filename.replace("../eigenTriangle/", "")
+        filename = filename + "_eigen.txt"
+    if substring2 in filename:
+        filename = filename.replace("../T-Sample/", "")
+        filename = filename + "_sample.txt"
     return filename
 
 if __name__ == "__main__":
-    filepath = "../eigenTriangle/result_first.txt"
-    #filepath = "../T-Sample/result_first.txt"
+    filename, filepath = sys.argv
+
     separator = " "
+    results = []
     
     with open(filepath, 'r') as file:
         results = [tuple(map(int, line.strip().split(separator)[:2])) for line in file]
@@ -29,8 +37,7 @@ if __name__ == "__main__":
         print("Clustering coefficient: " + str(cc))
 
     # Save the results (number of edges and approximate number of triangles) in the file.
-    result_file = get_dataset(filepath) + "_eigen.txt"
-    #result_file = get_dataset(filepath) + "_sample.txt"
+    result_file = get_file(filepath)
     with open(result_file, "a") as file:
         for tupla in clustering_coefficients:
             file.write(str(tupla[0]) + " " + str(tupla[1]) + "\n")
