@@ -6,6 +6,6 @@ Repository regarding the project of the course of Learning From Networks.
 
 Title of the project: "Evaluation of (global) clustering coefficients obtained with different triangle count algorithms"
 
-# Instructions of how to run eigenTriangle algorithm
+# Instructions on how to run eigenTriangle algorithm
 In a terminal run the following command:
 - `python eigenTriangle.py <dataset_file_path>`
