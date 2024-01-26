@@ -13,6 +13,6 @@ Download the implementation of the algorithm at the following link https://githu
 
 Run in a terminal the following command:
 
-./run_ins.sh <input_path> <output_path> <k> <alpha>
+- './run_ins.sh <input_path> <output_path> <k> <alpha>'
 
-where <k> is the maximum number of sampled edges and <alpha> is the relative size of the waiting room.
+where k is the maximum number of sampled edges and alpha is the relative size of the waiting room.
