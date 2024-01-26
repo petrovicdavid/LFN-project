@@ -11,7 +11,7 @@ Title of the project: "Evaluation of (global) clustering coefficients obtained w
 
 Download the implementation of the algorithm at the following link https://github.com/kijungs/waiting_room.git
 
-Run in a terminal the following command:
+In a terminal run the following command:
 - `./run_ins.sh <input_path> <output_path> <k> <alpha>`
 
 where k is the maximum number of sampled edges and alpha is the relative size of the waiting room.
