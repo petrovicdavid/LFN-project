@@ -8,4 +8,4 @@ Title of the project: "Evaluation of (global) clustering coefficients obtained w
 
 
 # Instructions
-Instructions of how to properly run each algorithm can be found in the README.md files inside each folder.
+Instructions on how to properly run each algorithm can be found in the README.md files inside each folder.
