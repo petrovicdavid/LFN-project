@@ -34,11 +34,11 @@ if __name__ == "__main__":
 
     # Read the file_name.
     filepath = sys.argv[1]
-    assert os.path.isfile(filepath), "File not found"
+    assert os.path.isfile(filepath), "File not found!"
 
     # Read the capacity of R_base.
     c = sys.argv[2]
-    assert c.isdigit(), "c must be an integer"
+    assert c.isdigit(), "c must be an integer!"
     c = int(c) # Capacity of R_base for the given dataset
     
     # Check the type of delimitator of the dataset.

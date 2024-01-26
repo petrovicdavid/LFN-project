@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     # Read the file_name.
     filepath = sys.argv[1]
-    assert os.path.isfile(filepath), "File not found"
+    assert os.path.isfile(filepath), "File not found!"
 
     separator = " "
     results = []
