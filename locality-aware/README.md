@@ -10,6 +10,7 @@ Title of the project: "Evaluation of (global) clustering coefficients obtained w
 # Instructions on how to run locality-aware algorithm
 
 Download the implementation of the algorithm at the following link https://github.com/kijungs/waiting_room.git
+
 Run in a terminal the following command:
 - `./run_ins.sh <input_path> <output_path> <k> <alpha>`
 
