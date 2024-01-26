@@ -7,7 +7,7 @@ Repository regarding the project of the course of Learning From Networks.
 Title of the project: "Evaluation of (global) clustering coefficients obtained with different triangle count algorithms"
 
 
-# Instructions
+# Instructions on how to run locality-aware algorithm
 
 Download the implementation of the algorithm at the following link https://github.com/kijungs/waiting_room.git
 Run in a terminal the following command:
