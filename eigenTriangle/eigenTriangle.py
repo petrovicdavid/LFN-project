@@ -42,7 +42,7 @@ def get_dataset(filename):
 
 if __name__ == "__main__":
     # Check the number of input parameters.
-    assert len(sys.argv) == 2, "Usage: python T-sample.py <file_name>"
+    assert len(sys.argv) == 2, "Usage: python eigenTriangle.py <file_name>"
 
     # Read the file_name.
     filepath = sys.argv[1]

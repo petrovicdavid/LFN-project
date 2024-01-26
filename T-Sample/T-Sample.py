@@ -30,7 +30,7 @@ def number_generator():
 
 if __name__ == "__main__":
     # Check the number of input parameters.
-    assert len(sys.argv) == 3, "Usage: python T-sample.py <file_name> <c>"
+    assert len(sys.argv) == 3, "Usage: python T-Sample.py <file_name> <c>"
 
     # Read the file_name.
     filepath = sys.argv[1]

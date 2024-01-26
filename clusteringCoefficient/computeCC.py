@@ -7,20 +7,24 @@ import scipy.special
 import os
 
 def get_file(filename):
-    substring1 = "eigen"
+    substring1 = "locality"
     substring2 = "T-Sample"
+    substring3 = "eigen"
     filename = filename.replace(".txt", "")
     if substring1 in filename:
-        filename = filename.replace("../eigenTriangle/", "")
-        filename = filename + "_eigen.txt"
+        filename = filename.replace("../locality-aware/", "")
+        filename = filename + "_locality.txt"
     if substring2 in filename:
         filename = filename.replace("../T-Sample/", "")
         filename = filename + "_sample.txt"
+    if substring3 in filename:
+        filename = filename.replace("../eigenTriangle/", "")
+        filename = filename + "_eigen.txt"
     return filename
 
 if __name__ == "__main__":
     # Check the number of input parameters.
-    assert len(sys.argv) == 2, "Usage: python T-sample.py <file_name>"
+    assert len(sys.argv) == 2, "Usage: python computeCC.py <file_name>"
 
     # Read the file_name.
     filepath = sys.argv[1]
