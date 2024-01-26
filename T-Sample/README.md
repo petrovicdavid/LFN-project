@@ -8,4 +8,4 @@ Title of the project: "Evaluation of (global) clustering coefficients obtained w
 
 # Instructions of how to run T-Sample algorithm
 In a terminal run the following command:
-- `python T-Sample.py <dataset_file> <dataset_capacity>`
+- `python T-Sample.py <dataset_file_path> <reservoir_capacity>`
