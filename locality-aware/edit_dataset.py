@@ -7,7 +7,6 @@ def spaceToTab(line):
     numbers_with_tab = '\t'.join(numbers)
     return numbers_with_tab + '\n'
 
-
 def convertFile(input_file, output_file):
     with open(input_file, 'r') as file_input:
         lines_input = file_input.readlines()
@@ -17,9 +16,7 @@ def convertFile(input_file, output_file):
             line_output = spaceToTab(line_input)
             file_output.write(line_output)
 
-    print(f"Done. Check the file named {output_file}.")
-
-
+    print(f"Done! Check the file named {output_file}.")
 
 if __name__ == "__main__":
   
