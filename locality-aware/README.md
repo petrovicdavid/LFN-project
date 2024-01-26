@@ -8,6 +8,7 @@ Title of the project: "Evaluation of (global) clustering coefficients obtained w
 
 
 # Instructions
+
 Download the implementation of the algorithm at the following link https://github.com/kijungs/waiting_room.git
 
 Run in a terminal the following command:
