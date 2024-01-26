@@ -4,6 +4,7 @@
 
 import sys
 import scipy.special
+import os
 
 def get_file(filename):
     substring1 = "eigen"
@@ -18,7 +19,12 @@ def get_file(filename):
     return filename
 
 if __name__ == "__main__":
-    filename, filepath = sys.argv
+    # Check the number of input parameters
+    assert len(sys.argv) == 2, "Usage: python T-sample.py <file_name>"
+
+    # Read the file_name
+    filepath = sys.argv[1]
+    assert os.path.isfile(filepath), "File not found"
 
     separator = " "
     results = []
@@ -36,7 +42,7 @@ if __name__ == "__main__":
 
         print("Clustering coefficient: " + str(cc))
 
-    # Save the results (number of edges and approximate number of triangles) in the file.
+    # Save the results (number of edges and approximate number of triangles) in the file
     result_file = get_file(filepath)
     with open(result_file, "a") as file:
         for tupla in clustering_coefficients:
